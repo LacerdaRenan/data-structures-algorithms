@@ -8,7 +8,7 @@
  * an element and is using the iterative method of the binary search.
 */
 
-int buscaBinaria(int *arr, int sizeOfArray, int element);
+int binarySearch(int *arr, int sizeOfArray, int element);
 
 int main(int argc, char **argv) {
 
@@ -21,24 +21,23 @@ int main(int argc, char **argv) {
     int element;
     scanf("%i",&element);
 
-    printf("%i\n", buscaBinaria(arr, sizeOfArray, element));
+    printf("%i\n", binarySearch(arr, sizeOfArray, element));
     
     return 0;
 }
 
-
-int buscaBinaria(int *arr, int sizeOfArray, int element) {
+int binarySearch(int *arr, int sizeOfArray, int element) {
     int left=0, right = sizeOfArray-1, middle = (right+left)/2, iterations=0;
 
     while(left<right) {
         iterations++;
         if (arr[middle] == element) return iterations;
         else if (arr[middle] > element) {
-            right = middle;
+            right = middle-1;
             middle = (right+left)/2;
         }
         else if (arr[middle] < element) {
-            left = middle;
+            left = middle+1;
             middle = (right+left)/2;
         }
     }
